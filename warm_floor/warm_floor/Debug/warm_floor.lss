@@ -1,0 +1,1214 @@
+
+warm_floor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  000005e2  00000656  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000005e2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000662  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000694  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000e8  00000000  00000000  000006d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001919  00000000  00000000  000007bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000be0  00000000  00000000  000020d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000c55  00000000  00000000  00002cb5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001d8  00000000  00000000  0000390c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000615  00000000  00000000  00003ae4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000f6f  00000000  00000000  000040f9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000c0  00000000  00000000  00005068  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 9f 01 	jmp	0x33e	; 0x33e <__vector_1>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 ee       	ldi	r30, 0xE2	; 226
+  7c:	f5 e0       	ldi	r31, 0x05	; 5
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 eb 01 	call	0x3d6	; 0x3d6 <main>
+  8e:	0c 94 ef 02 	jmp	0x5de	; 0x5de <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <_Z11InitDisplayv>:
+	int res = 1;
+	for(int i = 0; i<b; i++){
+		res *=a;
+	}
+	return res;
+}
+  96:	8f ef       	ldi	r24, 0xFF	; 255
+  98:	84 b9       	out	0x04, r24	; 4
+  9a:	15 b8       	out	0x05, r1	; 5
+  9c:	87 b1       	in	r24, 0x07	; 7
+  9e:	83 60       	ori	r24, 0x03	; 3
+  a0:	87 b9       	out	0x07, r24	; 7
+  a2:	83 e0       	ldi	r24, 0x03	; 3
+  a4:	88 b9       	out	0x08, r24	; 8
+  a6:	08 95       	ret
+
+000000a8 <_Z7converth>:
+
+int convert (unsigned char temper){
+  a8:	e8 2f       	mov	r30, r24
+	int IntegerTemper = 0;
+	for(int i = 0; i <8; i++){
+  aa:	60 e0       	ldi	r22, 0x00	; 0
+  ac:	70 e0       	ldi	r23, 0x00	; 0
+	}
+	return res;
+}
+
+int convert (unsigned char temper){
+	int IntegerTemper = 0;
+  ae:	80 e0       	ldi	r24, 0x00	; 0
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i = 0; i <8; i++){
+		if(temper & (1 << i)) IntegerTemper += power(2,i);
+  b2:	f0 e0       	ldi	r31, 0x00	; 0
+  b4:	9f 01       	movw	r18, r30
+  b6:	06 2e       	mov	r0, r22
+  b8:	02 c0       	rjmp	.+4      	; 0xbe <_Z7converth+0x16>
+  ba:	35 95       	asr	r19
+  bc:	27 95       	ror	r18
+  be:	0a 94       	dec	r0
+  c0:	e2 f7       	brpl	.-8      	; 0xba <_Z7converth+0x12>
+  c2:	20 ff       	sbrs	r18, 0
+  c4:	13 c0       	rjmp	.+38     	; 0xec <_Z7converth+0x44>
+	PortCatod = (1<<PinCatod_10)|(1<<PinCatod_1); // высокий уровень на ноги катодов
+}
+
+int power (int a,int b){
+	int res = 1;
+	for(int i = 0; i<b; i++){
+  c6:	16 16       	cp	r1, r22
+  c8:	17 06       	cpc	r1, r23
+  ca:	64 f4       	brge	.+24     	; 0xe4 <_Z7converth+0x3c>
+  cc:	41 e0       	ldi	r20, 0x01	; 1
+  ce:	50 e0       	ldi	r21, 0x00	; 0
+  d0:	20 e0       	ldi	r18, 0x00	; 0
+  d2:	30 e0       	ldi	r19, 0x00	; 0
+		res *=a;
+  d4:	44 0f       	add	r20, r20
+  d6:	55 1f       	adc	r21, r21
+	PortCatod = (1<<PinCatod_10)|(1<<PinCatod_1); // высокий уровень на ноги катодов
+}
+
+int power (int a,int b){
+	int res = 1;
+	for(int i = 0; i<b; i++){
+  d8:	2f 5f       	subi	r18, 0xFF	; 255
+  da:	3f 4f       	sbci	r19, 0xFF	; 255
+  dc:	26 17       	cp	r18, r22
+  de:	37 07       	cpc	r19, r23
+  e0:	c9 f7       	brne	.-14     	; 0xd4 <_Z7converth+0x2c>
+  e2:	02 c0       	rjmp	.+4      	; 0xe8 <_Z7converth+0x40>
+  e4:	41 e0       	ldi	r20, 0x01	; 1
+  e6:	50 e0       	ldi	r21, 0x00	; 0
+}
+
+int convert (unsigned char temper){
+	int IntegerTemper = 0;
+	for(int i = 0; i <8; i++){
+		if(temper & (1 << i)) IntegerTemper += power(2,i);
+  e8:	84 0f       	add	r24, r20
+  ea:	95 1f       	adc	r25, r21
+	return res;
+}
+
+int convert (unsigned char temper){
+	int IntegerTemper = 0;
+	for(int i = 0; i <8; i++){
+  ec:	6f 5f       	subi	r22, 0xFF	; 255
+  ee:	7f 4f       	sbci	r23, 0xFF	; 255
+  f0:	68 30       	cpi	r22, 0x08	; 8
+  f2:	71 05       	cpc	r23, r1
+  f4:	f9 f6       	brne	.-66     	; 0xb4 <_Z7converth+0xc>
+		if(temper & (1 << i)) IntegerTemper += power(2,i);
+	}
+	return IntegerTemper;
+}
+  f6:	08 95       	ret
+
+000000f8 <_Z13TemperDisplayh>:
+
+void TemperDisplay (unsigned char temper){
+  f8:	1f 93       	push	r17
+  fa:	cf 93       	push	r28
+  fc:	df 93       	push	r29
+  fe:	18 2f       	mov	r17, r24
+ 100:	11 70       	andi	r17, 0x01	; 1
+	bool HalfTemper = false;
+	if(temper & 1<<0) HalfTemper = true;
+	temper>>=1;
+	int IntegerTemper = convert(temper);
+ 102:	86 95       	lsr	r24
+ 104:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z7converth>
+		if(HalfTemper)PORT_DISPLAY |= (1 << PointLeg);
+		PortCatod = 0b01;
+		_delay_ms(5);
+		PortCatod = 0b11;
+		_delay_ms(1);
+		PORT_DISPLAY = SEGMENTS[IntegerTemper / 10];
+ 108:	6a e0       	ldi	r22, 0x0A	; 10
+ 10a:	70 e0       	ldi	r23, 0x00	; 0
+ 10c:	0e 94 c7 02 	call	0x58e	; 0x58e <__divmodhi4>
+ 110:	2a e0       	ldi	r18, 0x0A	; 10
+ 112:	30 e0       	ldi	r19, 0x00	; 0
+	bool HalfTemper = false;
+	if(temper & 1<<0) HalfTemper = true;
+	temper>>=1;
+	int IntegerTemper = convert(temper);
+	for(int i = 0;i < 10;i++){
+		PORT_DISPLAY = SEGMENTS[IntegerTemper % 10];
+ 114:	dc 01       	movw	r26, r24
+ 116:	a0 50       	subi	r26, 0x00	; 0
+ 118:	bf 4f       	sbci	r27, 0xFF	; 255
+		if(HalfTemper)PORT_DISPLAY |= (1 << PointLeg);
+		PortCatod = 0b01;
+ 11a:	51 e0       	ldi	r21, 0x01	; 1
+		_delay_ms(5);
+		PortCatod = 0b11;
+ 11c:	93 e0       	ldi	r25, 0x03	; 3
+		_delay_ms(1);
+		PORT_DISPLAY = SEGMENTS[IntegerTemper / 10];
+ 11e:	fb 01       	movw	r30, r22
+ 120:	e0 50       	subi	r30, 0x00	; 0
+ 122:	ff 4f       	sbci	r31, 0xFF	; 255
+		PortCatod = 0b10;
+ 124:	82 e0       	ldi	r24, 0x02	; 2
+	bool HalfTemper = false;
+	if(temper & 1<<0) HalfTemper = true;
+	temper>>=1;
+	int IntegerTemper = convert(temper);
+	for(int i = 0;i < 10;i++){
+		PORT_DISPLAY = SEGMENTS[IntegerTemper % 10];
+ 126:	4c 91       	ld	r20, X
+ 128:	45 b9       	out	0x05, r20	; 5
+		if(HalfTemper)PORT_DISPLAY |= (1 << PointLeg);
+ 12a:	11 11       	cpse	r17, r1
+ 12c:	2f 9a       	sbi	0x05, 7	; 5
+		PortCatod = 0b01;
+ 12e:	58 b9       	out	0x08, r21	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 130:	c1 ee       	ldi	r28, 0xE1	; 225
+ 132:	d4 e0       	ldi	r29, 0x04	; 4
+ 134:	21 97       	sbiw	r28, 0x01	; 1
+ 136:	f1 f7       	brne	.-4      	; 0x134 <_Z13TemperDisplayh+0x3c>
+ 138:	00 c0       	rjmp	.+0      	; 0x13a <_Z13TemperDisplayh+0x42>
+ 13a:	00 00       	nop
+		_delay_ms(5);
+		PortCatod = 0b11;
+ 13c:	98 b9       	out	0x08, r25	; 8
+ 13e:	c9 ef       	ldi	r28, 0xF9	; 249
+ 140:	d0 e0       	ldi	r29, 0x00	; 0
+ 142:	21 97       	sbiw	r28, 0x01	; 1
+ 144:	f1 f7       	brne	.-4      	; 0x142 <_Z13TemperDisplayh+0x4a>
+ 146:	00 c0       	rjmp	.+0      	; 0x148 <_Z13TemperDisplayh+0x50>
+ 148:	00 00       	nop
+		_delay_ms(1);
+		PORT_DISPLAY = SEGMENTS[IntegerTemper / 10];
+ 14a:	40 81       	ld	r20, Z
+ 14c:	45 b9       	out	0x05, r20	; 5
+		PortCatod = 0b10;
+ 14e:	88 b9       	out	0x08, r24	; 8
+ 150:	c1 ee       	ldi	r28, 0xE1	; 225
+ 152:	d4 e0       	ldi	r29, 0x04	; 4
+ 154:	21 97       	sbiw	r28, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154 <_Z13TemperDisplayh+0x5c>
+ 158:	00 c0       	rjmp	.+0      	; 0x15a <_Z13TemperDisplayh+0x62>
+ 15a:	00 00       	nop
+		_delay_ms(5);
+		PortCatod = 0b11;
+ 15c:	98 b9       	out	0x08, r25	; 8
+ 15e:	c9 ef       	ldi	r28, 0xF9	; 249
+ 160:	d0 e0       	ldi	r29, 0x00	; 0
+ 162:	21 97       	sbiw	r28, 0x01	; 1
+ 164:	f1 f7       	brne	.-4      	; 0x162 <_Z13TemperDisplayh+0x6a>
+ 166:	00 c0       	rjmp	.+0      	; 0x168 <_Z13TemperDisplayh+0x70>
+ 168:	00 00       	nop
+ 16a:	21 50       	subi	r18, 0x01	; 1
+ 16c:	31 09       	sbc	r19, r1
+void TemperDisplay (unsigned char temper){
+	bool HalfTemper = false;
+	if(temper & 1<<0) HalfTemper = true;
+	temper>>=1;
+	int IntegerTemper = convert(temper);
+	for(int i = 0;i < 10;i++){
+ 16e:	d9 f6       	brne	.-74     	; 0x126 <_Z13TemperDisplayh+0x2e>
+		PortCatod = 0b11;
+		_delay_ms(1);
+	}
+// 	PORT_DISPLAY = 0x00;
+// 	PortCatod = 0x00;
+}
+ 170:	df 91       	pop	r29
+ 172:	cf 91       	pop	r28
+ 174:	1f 91       	pop	r17
+ 176:	08 95       	ret
+
+00000178 <_Z12SetupDisplayhh>:
+
+void SetupDisplay (uint8_t T_setup, uint8_t T_current){
+ 178:	1f 93       	push	r17
+ 17a:	cf 93       	push	r28
+ 17c:	df 93       	push	r29
+ 17e:	18 2f       	mov	r17, r24
+ 180:	d6 2f       	mov	r29, r22
+ 182:	c5 e0       	ldi	r28, 0x05	; 5
+ 184:	8f e4       	ldi	r24, 0x4F	; 79
+ 186:	93 ec       	ldi	r25, 0xC3	; 195
+ 188:	01 97       	sbiw	r24, 0x01	; 1
+ 18a:	f1 f7       	brne	.-4      	; 0x188 <_Z12SetupDisplayhh+0x10>
+ 18c:	00 c0       	rjmp	.+0      	; 0x18e <_Z12SetupDisplayhh+0x16>
+ 18e:	00 00       	nop
+	for(uint8_t i = 0; i < 5; i++){
+		_delay_ms(200);
+		TemperDisplay(T_setup);
+ 190:	81 2f       	mov	r24, r17
+ 192:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 196:	8f e4       	ldi	r24, 0x4F	; 79
+ 198:	93 ec       	ldi	r25, 0xC3	; 195
+ 19a:	01 97       	sbiw	r24, 0x01	; 1
+ 19c:	f1 f7       	brne	.-4      	; 0x19a <_Z12SetupDisplayhh+0x22>
+ 19e:	00 c0       	rjmp	.+0      	; 0x1a0 <_Z12SetupDisplayhh+0x28>
+ 1a0:	00 00       	nop
+		_delay_ms(200);
+		TemperDisplay(T_setup);
+ 1a2:	81 2f       	mov	r24, r17
+ 1a4:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 1a8:	8f e4       	ldi	r24, 0x4F	; 79
+ 1aa:	93 ec       	ldi	r25, 0xC3	; 195
+ 1ac:	01 97       	sbiw	r24, 0x01	; 1
+ 1ae:	f1 f7       	brne	.-4      	; 0x1ac <_Z12SetupDisplayhh+0x34>
+ 1b0:	00 c0       	rjmp	.+0      	; 0x1b2 <_Z12SetupDisplayhh+0x3a>
+ 1b2:	00 00       	nop
+		_delay_ms(200);
+		TemperDisplay(T_setup);
+ 1b4:	81 2f       	mov	r24, r17
+ 1b6:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+		for(uint8_t j=0; j<3; j++){
+			TemperDisplay(T_current);
+ 1ba:	8d 2f       	mov	r24, r29
+ 1bc:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 1c0:	8d 2f       	mov	r24, r29
+ 1c2:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 1c6:	8d 2f       	mov	r24, r29
+ 1c8:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 1cc:	c1 50       	subi	r28, 0x01	; 1
+// 	PORT_DISPLAY = 0x00;
+// 	PortCatod = 0x00;
+}
+
+void SetupDisplay (uint8_t T_setup, uint8_t T_current){
+	for(uint8_t i = 0; i < 5; i++){
+ 1ce:	d1 f6       	brne	.-76     	; 0x184 <_Z12SetupDisplayhh+0xc>
+		TemperDisplay(T_setup);
+		for(uint8_t j=0; j<3; j++){
+			TemperDisplay(T_current);
+		}
+	}
+}
+ 1d0:	df 91       	pop	r29
+ 1d2:	cf 91       	pop	r28
+ 1d4:	1f 91       	pop	r17
+ 1d6:	08 95       	ret
+
+000001d8 <_Z12ErrorDisplayi>:
+
+void ErrorDisplay (int error){
+ 1d8:	25 e0       	ldi	r18, 0x05	; 5
+ 1da:	30 e0       	ldi	r19, 0x00	; 0
+		for(int i = 0;i < 5;i++){
+			PORT_DISPLAY = SEGMENTS[error];
+ 1dc:	fc 01       	movw	r30, r24
+ 1de:	e0 50       	subi	r30, 0x00	; 0
+ 1e0:	ff 4f       	sbci	r31, 0xFF	; 255
+			PortCatod = 0b01;
+ 1e2:	71 e0       	ldi	r23, 0x01	; 1
+			_delay_ms(5);
+			PortCatod = 0b11;
+ 1e4:	93 e0       	ldi	r25, 0x03	; 3
+			_delay_ms(1);
+			PORT_DISPLAY = E;
+ 1e6:	69 e7       	ldi	r22, 0x79	; 121
+			PortCatod = 0b10;
+ 1e8:	52 e0       	ldi	r21, 0x02	; 2
+	}
+}
+
+void ErrorDisplay (int error){
+		for(int i = 0;i < 5;i++){
+			PORT_DISPLAY = SEGMENTS[error];
+ 1ea:	40 81       	ld	r20, Z
+ 1ec:	45 b9       	out	0x05, r20	; 5
+			PortCatod = 0b01;
+ 1ee:	78 b9       	out	0x08, r23	; 8
+ 1f0:	a1 ee       	ldi	r26, 0xE1	; 225
+ 1f2:	b4 e0       	ldi	r27, 0x04	; 4
+ 1f4:	11 97       	sbiw	r26, 0x01	; 1
+ 1f6:	f1 f7       	brne	.-4      	; 0x1f4 <_Z12ErrorDisplayi+0x1c>
+ 1f8:	00 c0       	rjmp	.+0      	; 0x1fa <_Z12ErrorDisplayi+0x22>
+ 1fa:	00 00       	nop
+			_delay_ms(5);
+			PortCatod = 0b11;
+ 1fc:	98 b9       	out	0x08, r25	; 8
+ 1fe:	a9 ef       	ldi	r26, 0xF9	; 249
+ 200:	b0 e0       	ldi	r27, 0x00	; 0
+ 202:	11 97       	sbiw	r26, 0x01	; 1
+ 204:	f1 f7       	brne	.-4      	; 0x202 <_Z12ErrorDisplayi+0x2a>
+ 206:	00 c0       	rjmp	.+0      	; 0x208 <_Z12ErrorDisplayi+0x30>
+ 208:	00 00       	nop
+			_delay_ms(1);
+			PORT_DISPLAY = E;
+ 20a:	65 b9       	out	0x05, r22	; 5
+			PortCatod = 0b10;
+ 20c:	58 b9       	out	0x08, r21	; 8
+ 20e:	a1 ee       	ldi	r26, 0xE1	; 225
+ 210:	b4 e0       	ldi	r27, 0x04	; 4
+ 212:	11 97       	sbiw	r26, 0x01	; 1
+ 214:	f1 f7       	brne	.-4      	; 0x212 <_Z12ErrorDisplayi+0x3a>
+ 216:	00 c0       	rjmp	.+0      	; 0x218 <_Z12ErrorDisplayi+0x40>
+ 218:	00 00       	nop
+			_delay_ms(5);
+			PortCatod = 0b11;
+ 21a:	98 b9       	out	0x08, r25	; 8
+ 21c:	a9 ef       	ldi	r26, 0xF9	; 249
+ 21e:	b0 e0       	ldi	r27, 0x00	; 0
+ 220:	11 97       	sbiw	r26, 0x01	; 1
+ 222:	f1 f7       	brne	.-4      	; 0x220 <_Z12ErrorDisplayi+0x48>
+ 224:	00 c0       	rjmp	.+0      	; 0x226 <_Z12ErrorDisplayi+0x4e>
+ 226:	00 00       	nop
+ 228:	21 50       	subi	r18, 0x01	; 1
+ 22a:	31 09       	sbc	r19, r1
+		}
+	}
+}
+
+void ErrorDisplay (int error){
+		for(int i = 0;i < 5;i++){
+ 22c:	f1 f6       	brne	.-68     	; 0x1ea <_Z12ErrorDisplayi+0x12>
+			PortCatod = 0b11;
+			_delay_ms(1);
+		}
+// 		PORT_DISPLAY = 0x00;
+// 		PortCatod = 0x00;
+ 22e:	08 95       	ret
+
+00000230 <_Z12DS18B20_initv>:
+#include "ds18b20.h"
+
+
+//Инициализация DS18B20
+bool DS18B20_init(){
+	cli();
+ 230:	f8 94       	cli
+	bool OK_Flag = false;
+	LegTerm_OUT;
+ 232:	57 9a       	sbi	0x0a, 7	; 10
+	LegTermLevel_0;
+ 234:	5f 98       	cbi	0x0b, 7	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 236:	88 ec       	ldi	r24, 0xC8	; 200
+ 238:	8a 95       	dec	r24
+ 23a:	f1 f7       	brne	.-4      	; 0x238 <_Z12DS18B20_initv+0x8>
+	_delay_us(600);
+	LegTermLevel_1;
+ 23c:	5f 9a       	sbi	0x0b, 7	; 11
+ 23e:	90 e1       	ldi	r25, 0x10	; 16
+ 240:	9a 95       	dec	r25
+ 242:	f1 f7       	brne	.-4      	; 0x240 <_Z12DS18B20_initv+0x10>
+ 244:	00 c0       	rjmp	.+0      	; 0x246 <_Z12DS18B20_initv+0x16>
+	_delay_us(50);
+	LegTerm_IN;
+ 246:	57 98       	cbi	0x0a, 7	; 10
+	if(!(PIND & (1 << LegTerm )))OK_Flag = true; // Ловим импульс присутствия датчика
+ 248:	89 b1       	in	r24, 0x09	; 9
+ 24a:	90 e5       	ldi	r25, 0x50	; 80
+ 24c:	9a 95       	dec	r25
+ 24e:	f1 f7       	brne	.-4      	; 0x24c <_Z12DS18B20_initv+0x1c>
+	_delay_us(240);
+	LegTerm_OUT;
+ 250:	57 9a       	sbi	0x0a, 7	; 10
+	LegTermLevel_1;
+ 252:	5f 9a       	sbi	0x0b, 7	; 11
+ 254:	94 e6       	ldi	r25, 0x64	; 100
+ 256:	9a 95       	dec	r25
+ 258:	f1 f7       	brne	.-4      	; 0x256 <_Z12DS18B20_initv+0x26>
+	_delay_us(300);
+	return OK_Flag;
+ 25a:	80 95       	com	r24
+	sei();
+}
+ 25c:	88 1f       	adc	r24, r24
+ 25e:	88 27       	eor	r24, r24
+ 260:	88 1f       	adc	r24, r24
+ 262:	08 95       	ret
+
+00000264 <_Z10read_18b20v>:
+
+unsigned char read_18b20(){
+	unsigned char  data = 0;
+	cli();
+ 264:	f8 94       	cli
+	LegTerm_OUT;
+ 266:	57 9a       	sbi	0x0a, 7	; 10
+ 268:	98 e0       	ldi	r25, 0x08	; 8
+	return OK_Flag;
+	sei();
+}
+
+unsigned char read_18b20(){
+	unsigned char  data = 0;
+ 26a:	80 e0       	ldi	r24, 0x00	; 0
+	cli();
+	LegTerm_OUT;
+	for(unsigned char i = 0; i < 8; i++){
+		LegTermLevel_0;
+ 26c:	5f 98       	cbi	0x0b, 7	; 11
+		data >>= 1;
+ 26e:	28 2f       	mov	r18, r24
+ 270:	30 e0       	ldi	r19, 0x00	; 0
+ 272:	35 95       	asr	r19
+ 274:	27 95       	ror	r18
+ 276:	82 2f       	mov	r24, r18
+ 278:	00 c0       	rjmp	.+0      	; 0x27a <_Z10read_18b20v+0x16>
+ 27a:	00 00       	nop
+		_delay_us(3);
+		LegTermLevel_1;
+ 27c:	5f 9a       	sbi	0x0b, 7	; 11
+		LegTerm_IN;
+ 27e:	57 98       	cbi	0x0a, 7	; 10
+ 280:	44 e0       	ldi	r20, 0x04	; 4
+ 282:	4a 95       	dec	r20
+ 284:	f1 f7       	brne	.-4      	; 0x282 <_Z10read_18b20v+0x1e>
+		_delay_us(12);
+		if(PIND & (1 << LegTerm)) data |= 0x80;
+ 286:	4f 99       	sbic	0x09, 7	; 9
+ 288:	80 68       	ori	r24, 0x80	; 128
+		LegTerm_OUT;
+ 28a:	57 9a       	sbi	0x0a, 7	; 10
+		LegTermLevel_1;
+ 28c:	5f 9a       	sbi	0x0b, 7	; 11
+ 28e:	2f e0       	ldi	r18, 0x0F	; 15
+ 290:	2a 95       	dec	r18
+ 292:	f1 f7       	brne	.-4      	; 0x290 <_Z10read_18b20v+0x2c>
+ 294:	00 c0       	rjmp	.+0      	; 0x296 <_Z10read_18b20v+0x32>
+ 296:	00 c0       	rjmp	.+0      	; 0x298 <_Z10read_18b20v+0x34>
+ 298:	00 00       	nop
+ 29a:	91 50       	subi	r25, 0x01	; 1
+
+unsigned char read_18b20(){
+	unsigned char  data = 0;
+	cli();
+	LegTerm_OUT;
+	for(unsigned char i = 0; i < 8; i++){
+ 29c:	39 f7       	brne	.-50     	; 0x26c <_Z10read_18b20v+0x8>
+		_delay_us(45);
+		_delay_us(5);
+	}
+	return data;
+	sei();
+}
+ 29e:	08 95       	ret
+
+000002a0 <_Z11write_18b20h>:
+
+void write_18b20 (unsigned char command_byte){
+	cli();
+ 2a0:	f8 94       	cli
+ 2a2:	28 e0       	ldi	r18, 0x08	; 8
+ 2a4:	30 e0       	ldi	r19, 0x00	; 0
+	for(int i = 0; i<8; i++){
+		LegTermLevel_0;
+ 2a6:	5f 98       	cbi	0x0b, 7	; 11
+ 2a8:	95 e0       	ldi	r25, 0x05	; 5
+ 2aa:	9a 95       	dec	r25
+ 2ac:	f1 f7       	brne	.-4      	; 0x2aa <_Z11write_18b20h+0xa>
+		_delay_us(15);
+		if(command_byte & 0x01 ) LegTermLevel_1;
+ 2ae:	80 ff       	sbrs	r24, 0
+ 2b0:	02 c0       	rjmp	.+4      	; 0x2b6 <_Z11write_18b20h+0x16>
+ 2b2:	5f 9a       	sbi	0x0b, 7	; 11
+ 2b4:	01 c0       	rjmp	.+2      	; 0x2b8 <_Z11write_18b20h+0x18>
+		else LegTermLevel_0;
+ 2b6:	5f 98       	cbi	0x0b, 7	; 11
+ 2b8:	9f e0       	ldi	r25, 0x0F	; 15
+ 2ba:	9a 95       	dec	r25
+ 2bc:	f1 f7       	brne	.-4      	; 0x2ba <_Z11write_18b20h+0x1a>
+		_delay_us(45);
+		command_byte >>=1;
+ 2be:	86 95       	lsr	r24
+		LegTermLevel_1;
+ 2c0:	5f 9a       	sbi	0x0b, 7	; 11
+ 2c2:	00 c0       	rjmp	.+0      	; 0x2c4 <_Z11write_18b20h+0x24>
+ 2c4:	21 50       	subi	r18, 0x01	; 1
+ 2c6:	31 09       	sbc	r19, r1
+	sei();
+}
+
+void write_18b20 (unsigned char command_byte){
+	cli();
+	for(int i = 0; i<8; i++){
+ 2c8:	71 f7       	brne	.-36     	; 0x2a6 <_Z11write_18b20h+0x6>
+		_delay_us(45);
+		command_byte >>=1;
+		LegTermLevel_1;
+		_delay_us(2);
+	}
+	sei();
+ 2ca:	78 94       	sei
+ 2cc:	08 95       	ret
+
+000002ce <_Z13RequestTemperv>:
+}
+
+uint8_t RequestTemper(){
+ 2ce:	cf 93       	push	r28
+	uint8_t temper;
+	DS18B20_init();
+ 2d0:	0e 94 18 01 	call	0x230	; 0x230 <_Z12DS18B20_initv>
+	write_18b20(NOID);
+ 2d4:	8c ec       	ldi	r24, 0xCC	; 204
+ 2d6:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(T_CONVERT);
+ 2da:	84 e4       	ldi	r24, 0x44	; 68
+ 2dc:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2e0:	87 ea       	ldi	r24, 0xA7	; 167
+ 2e2:	91 e6       	ldi	r25, 0x61	; 97
+ 2e4:	01 97       	sbiw	r24, 0x01	; 1
+ 2e6:	f1 f7       	brne	.-4      	; 0x2e4 <_Z13RequestTemperv+0x16>
+ 2e8:	00 c0       	rjmp	.+0      	; 0x2ea <_Z13RequestTemperv+0x1c>
+ 2ea:	00 00       	nop
+	_delay_ms(100);
+	DS18B20_init();
+ 2ec:	0e 94 18 01 	call	0x230	; 0x230 <_Z12DS18B20_initv>
+	write_18b20(NOID);
+ 2f0:	8c ec       	ldi	r24, 0xCC	; 204
+ 2f2:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(READ_DATA);
+ 2f6:	8e eb       	ldi	r24, 0xBE	; 190
+ 2f8:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	temper = read_18b20()>>3;
+ 2fc:	0e 94 32 01 	call	0x264	; 0x264 <_Z10read_18b20v>
+ 300:	c8 2f       	mov	r28, r24
+	temper |= read_18b20()<<5;
+ 302:	0e 94 32 01 	call	0x264	; 0x264 <_Z10read_18b20v>
+	return temper;
+ 306:	20 e2       	ldi	r18, 0x20	; 32
+ 308:	82 9f       	mul	r24, r18
+ 30a:	c0 01       	movw	r24, r0
+ 30c:	11 24       	eor	r1, r1
+ 30e:	c6 95       	lsr	r28
+ 310:	c6 95       	lsr	r28
+ 312:	c6 95       	lsr	r28
+}
+ 314:	8c 2b       	or	r24, r28
+ 316:	cf 91       	pop	r28
+ 318:	08 95       	ret
+
+0000031a <_Z14SetupTermometrv>:
+
+void SetupTermometr(){
+	DS18B20_init();
+ 31a:	0e 94 18 01 	call	0x230	; 0x230 <_Z12DS18B20_initv>
+	write_18b20(NOID);
+ 31e:	8c ec       	ldi	r24, 0xCC	; 204
+ 320:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(WRITE_MEMORY);
+ 324:	8e e4       	ldi	r24, 0x4E	; 78
+ 326:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(0x00);//Настройка регистра Th
+ 32a:	80 e0       	ldi	r24, 0x00	; 0
+ 32c:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(0x00);//Настройка регистра Tl
+ 330:	80 e0       	ldi	r24, 0x00	; 0
+ 332:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+	write_18b20(0x00);//Настройка разрешения (0,5)
+ 336:	80 e0       	ldi	r24, 0x00	; 0
+ 338:	0e 94 50 01 	call	0x2a0	; 0x2a0 <_Z11write_18b20h>
+ 33c:	08 95       	ret
+
+0000033e <__vector_1>:
+
+unsigned char T_setup = 0x48;
+
+//void TemperDisplay(unsigned char t_setpoint);
+ 
+ ISR(INT0_vect){
+ 33e:	1f 92       	push	r1
+ 340:	0f 92       	push	r0
+ 342:	0f b6       	in	r0, 0x3f	; 63
+ 344:	0f 92       	push	r0
+ 346:	11 24       	eor	r1, r1
+ 348:	2f 93       	push	r18
+ 34a:	3f 93       	push	r19
+ 34c:	4f 93       	push	r20
+ 34e:	5f 93       	push	r21
+ 350:	6f 93       	push	r22
+ 352:	7f 93       	push	r23
+ 354:	8f 93       	push	r24
+ 356:	9f 93       	push	r25
+ 358:	af 93       	push	r26
+ 35a:	bf 93       	push	r27
+ 35c:	cf 93       	push	r28
+ 35e:	df 93       	push	r29
+ 360:	ef 93       	push	r30
+ 362:	ff 93       	push	r31
+	 for(int i = 0; i < 100; i++){
+		if(!(PIND & (1 << 2))) return; 
+ 364:	4a 9b       	sbis	0x09, 2	; 9
+ 366:	24 c0       	rjmp	.+72     	; 0x3b0 <__vector_1+0x72>
+ 368:	c0 e0       	ldi	r28, 0x00	; 0
+ 36a:	d0 e0       	ldi	r29, 0x00	; 0
+ 36c:	02 c0       	rjmp	.+4      	; 0x372 <__vector_1+0x34>
+ 36e:	4a 9b       	sbis	0x09, 2	; 9
+ 370:	1f c0       	rjmp	.+62     	; 0x3b0 <__vector_1+0x72>
+		if(PIND & (1 << IN_ENCODER_A)){
+ 372:	4d 9b       	sbis	0x09, 5	; 9
+ 374:	13 c0       	rjmp	.+38     	; 0x39c <__vector_1+0x5e>
+			if (PIND & (1 << IN_ENCODER_B)){
+ 376:	4e 9b       	sbis	0x09, 6	; 9
+ 378:	08 c0       	rjmp	.+16     	; 0x38a <__vector_1+0x4c>
+				T_setup--;
+ 37a:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 37e:	81 50       	subi	r24, 0x01	; 1
+ 380:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <T_setup>
+				i = 0;
+ 384:	c0 e0       	ldi	r28, 0x00	; 0
+ 386:	d0 e0       	ldi	r29, 0x00	; 0
+ 388:	09 c0       	rjmp	.+18     	; 0x39c <__vector_1+0x5e>
+			}
+			else if(!(PIND & (1 << IN_ENCODER_B))) {
+ 38a:	4e 99       	sbic	0x09, 6	; 9
+ 38c:	07 c0       	rjmp	.+14     	; 0x39c <__vector_1+0x5e>
+				T_setup++;
+ 38e:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 392:	8f 5f       	subi	r24, 0xFF	; 255
+ 394:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <T_setup>
+				i = 0;
+ 398:	c0 e0       	ldi	r28, 0x00	; 0
+ 39a:	d0 e0       	ldi	r29, 0x00	; 0
+			}
+		}
+		while(PIND & (1 << IN_ENCODER_A));
+ 39c:	4d 99       	sbic	0x09, 5	; 9
+ 39e:	fe cf       	rjmp	.-4      	; 0x39c <__vector_1+0x5e>
+		TemperDisplay(T_setup);
+ 3a0:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 3a4:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+unsigned char T_setup = 0x48;
+
+//void TemperDisplay(unsigned char t_setpoint);
+ 
+ ISR(INT0_vect){
+	 for(int i = 0; i < 100; i++){
+ 3a8:	21 96       	adiw	r28, 0x01	; 1
+ 3aa:	c4 36       	cpi	r28, 0x64	; 100
+ 3ac:	d1 05       	cpc	r29, r1
+ 3ae:	fc f2       	brlt	.-66     	; 0x36e <__vector_1+0x30>
+			}
+		}
+		while(PIND & (1 << IN_ENCODER_A));
+		TemperDisplay(T_setup);
+	 }
+ }
+ 3b0:	ff 91       	pop	r31
+ 3b2:	ef 91       	pop	r30
+ 3b4:	df 91       	pop	r29
+ 3b6:	cf 91       	pop	r28
+ 3b8:	bf 91       	pop	r27
+ 3ba:	af 91       	pop	r26
+ 3bc:	9f 91       	pop	r25
+ 3be:	8f 91       	pop	r24
+ 3c0:	7f 91       	pop	r23
+ 3c2:	6f 91       	pop	r22
+ 3c4:	5f 91       	pop	r21
+ 3c6:	4f 91       	pop	r20
+ 3c8:	3f 91       	pop	r19
+ 3ca:	2f 91       	pop	r18
+ 3cc:	0f 90       	pop	r0
+ 3ce:	0f be       	out	0x3f, r0	; 63
+ 3d0:	0f 90       	pop	r0
+ 3d2:	1f 90       	pop	r1
+ 3d4:	18 95       	reti
+
+000003d6 <main>:
+
+int main(){
+	unsigned char T_current ;
+	InitDisplay();
+ 3d6:	0e 94 4b 00 	call	0x96	; 0x96 <_Z11InitDisplayv>
+	LegTerm_IN;
+ 3da:	57 98       	cbi	0x0a, 7	; 10
+	LegTermLevel_1;
+ 3dc:	5f 9a       	sbi	0x0b, 7	; 11
+	while(!DS18B20_init()){
+ 3de:	0e 94 18 01 	call	0x230	; 0x230 <_Z12DS18B20_initv>
+ 3e2:	81 11       	cpse	r24, r1
+ 3e4:	11 c0       	rjmp	.+34     	; 0x408 <__LOCK_REGION_LENGTH__+0x8>
+ 3e6:	c2 e3       	ldi	r28, 0x32	; 50
+		for(uint8_t i = 0; i < 50; i++){
+			ErrorDisplay(SENSOR_ERROR);
+ 3e8:	81 e0       	ldi	r24, 0x01	; 1
+ 3ea:	90 e0       	ldi	r25, 0x00	; 0
+ 3ec:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <_Z12ErrorDisplayi>
+ 3f0:	c1 50       	subi	r28, 0x01	; 1
+	unsigned char T_current ;
+	InitDisplay();
+	LegTerm_IN;
+	LegTermLevel_1;
+	while(!DS18B20_init()){
+		for(uint8_t i = 0; i < 50; i++){
+ 3f2:	d1 f7       	brne	.-12     	; 0x3e8 <main+0x12>
+ 3f4:	2f e5       	ldi	r18, 0x5F	; 95
+ 3f6:	8a ee       	ldi	r24, 0xEA	; 234
+ 3f8:	90 e0       	ldi	r25, 0x00	; 0
+ 3fa:	21 50       	subi	r18, 0x01	; 1
+ 3fc:	80 40       	sbci	r24, 0x00	; 0
+ 3fe:	90 40       	sbci	r25, 0x00	; 0
+ 400:	e1 f7       	brne	.-8      	; 0x3fa <main+0x24>
+ 402:	00 c0       	rjmp	.+0      	; 0x404 <__LOCK_REGION_LENGTH__+0x4>
+ 404:	00 00       	nop
+ 406:	eb cf       	rjmp	.-42     	; 0x3de <main+0x8>
+			ErrorDisplay(SENSOR_ERROR);
+		}
+		_delay_ms(300);
+	}
+	MotorInitial();
+ 408:	0e 94 6f 02 	call	0x4de	; 0x4de <_Z12MotorInitialv>
+	StartPosition();
+ 40c:	0e 94 b9 02 	call	0x572	; 0x572 <_Z13StartPositionv>
+	SetupTermometr();//Настройка разрешения (0,5)
+ 410:	0e 94 8d 01 	call	0x31a	; 0x31a <_Z14SetupTermometrv>
+	DDRD &= ~((1<<IN_ENCODER_A)|(1<<IN_ENCODER_B));//вход от Энкодера
+ 414:	8a b1       	in	r24, 0x0a	; 10
+ 416:	8f 79       	andi	r24, 0x9F	; 159
+ 418:	8a b9       	out	0x0a, r24	; 10
+	EICRA |=(1 << ISC01);//прерывание по нисходящему фронту на INT0
+ 41a:	e9 e6       	ldi	r30, 0x69	; 105
+ 41c:	f0 e0       	ldi	r31, 0x00	; 0
+ 41e:	80 81       	ld	r24, Z
+ 420:	82 60       	ori	r24, 0x02	; 2
+ 422:	80 83       	st	Z, r24
+	EIMSK |=(1 << INT0);
+ 424:	e8 9a       	sbi	0x1d, 0	; 29
+	PORTD |= (1<<2); //подтянем питание к ноге прерывания
+ 426:	5a 9a       	sbi	0x0b, 2	; 11
+	sei();
+ 428:	78 94       	sei
+    while (1) {
+	    T_current = RequestTemper();
+ 42a:	0e 94 67 01 	call	0x2ce	; 0x2ce <_Z13RequestTemperv>
+ 42e:	d8 2f       	mov	r29, r24
+	    while(convert(T_current) - convert(T_setup) > 2){
+ 430:	8d 2f       	mov	r24, r29
+ 432:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z7converth>
+ 436:	8c 01       	movw	r16, r24
+ 438:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 43c:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z7converth>
+ 440:	08 1b       	sub	r16, r24
+ 442:	19 0b       	sbc	r17, r25
+ 444:	03 30       	cpi	r16, 0x03	; 3
+ 446:	11 05       	cpc	r17, r1
+ 448:	dc f0       	brlt	.+54     	; 0x480 <__LOCK_REGION_LENGTH__+0x80>
+ 44a:	ca e0       	ldi	r28, 0x0A	; 10
+		    for(uint8_t i = 0; i < 10; i++){
+			    for(uint8_t j = 0; j< 5; j++){
+				    StepForward();
+ 44c:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+ 450:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+ 454:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+ 458:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+ 45c:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+			    }
+			    while(!(PIND & (1<<ENDER_CLOSE))){
+ 460:	4c 99       	sbic	0x09, 4	; 9
+ 462:	06 c0       	rjmp	.+12     	; 0x470 <__LOCK_REGION_LENGTH__+0x70>
+				    ErrorDisplay(2);
+ 464:	82 e0       	ldi	r24, 0x02	; 2
+ 466:	90 e0       	ldi	r25, 0x00	; 0
+ 468:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <_Z12ErrorDisplayi>
+	    while(convert(T_current) - convert(T_setup) > 2){
+		    for(uint8_t i = 0; i < 10; i++){
+			    for(uint8_t j = 0; j< 5; j++){
+				    StepForward();
+			    }
+			    while(!(PIND & (1<<ENDER_CLOSE))){
+ 46c:	4c 9b       	sbis	0x09, 4	; 9
+ 46e:	fa cf       	rjmp	.-12     	; 0x464 <__LOCK_REGION_LENGTH__+0x64>
+ 470:	c1 50       	subi	r28, 0x01	; 1
+	PORTD |= (1<<2); //подтянем питание к ноге прерывания
+	sei();
+    while (1) {
+	    T_current = RequestTemper();
+	    while(convert(T_current) - convert(T_setup) > 2){
+		    for(uint8_t i = 0; i < 10; i++){
+ 472:	61 f7       	brne	.-40     	; 0x44c <__LOCK_REGION_LENGTH__+0x4c>
+			    }
+			    while(!(PIND & (1<<ENDER_CLOSE))){
+				    ErrorDisplay(2);
+			    }
+		    }
+		    SetupDisplay (T_setup, T_current);
+ 474:	6d 2f       	mov	r22, r29
+ 476:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 47a:	0e 94 bc 00 	call	0x178	; 0x178 <_Z12SetupDisplayhh>
+	EIMSK |=(1 << INT0);
+	PORTD |= (1<<2); //подтянем питание к ноге прерывания
+	sei();
+    while (1) {
+	    T_current = RequestTemper();
+	    while(convert(T_current) - convert(T_setup) > 2){
+ 47e:	d8 cf       	rjmp	.-80     	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+				    ErrorDisplay(2);
+			    }
+		    }
+		    SetupDisplay (T_setup, T_current);
+	    }
+	    while(convert(T_setup) - convert(T_current) > 2){
+ 480:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 484:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z7converth>
+ 488:	8c 01       	movw	r16, r24
+ 48a:	8d 2f       	mov	r24, r29
+ 48c:	0e 94 54 00 	call	0xa8	; 0xa8 <_Z7converth>
+ 490:	08 1b       	sub	r16, r24
+ 492:	19 0b       	sbc	r17, r25
+ 494:	03 30       	cpi	r16, 0x03	; 3
+ 496:	11 05       	cpc	r17, r1
+ 498:	dc f0       	brlt	.+54     	; 0x4d0 <__LOCK_REGION_LENGTH__+0xd0>
+ 49a:	ca e0       	ldi	r28, 0x0A	; 10
+		    for(uint8_t i = 0; i < 10; i++){
+			    for(uint8_t j = 0; j< 5; j++){
+				    StepRewers();
+ 49c:	0e 94 94 02 	call	0x528	; 0x528 <_Z10StepRewersv>
+ 4a0:	0e 94 94 02 	call	0x528	; 0x528 <_Z10StepRewersv>
+ 4a4:	0e 94 94 02 	call	0x528	; 0x528 <_Z10StepRewersv>
+ 4a8:	0e 94 94 02 	call	0x528	; 0x528 <_Z10StepRewersv>
+ 4ac:	0e 94 94 02 	call	0x528	; 0x528 <_Z10StepRewersv>
+			    }
+			    while(!(PIND & (1<<ENDER_OPEN))){
+ 4b0:	4b 99       	sbic	0x09, 3	; 9
+ 4b2:	06 c0       	rjmp	.+12     	; 0x4c0 <__LOCK_REGION_LENGTH__+0xc0>
+				    ErrorDisplay(COOLANT_LOW);
+ 4b4:	82 e0       	ldi	r24, 0x02	; 2
+ 4b6:	90 e0       	ldi	r25, 0x00	; 0
+ 4b8:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <_Z12ErrorDisplayi>
+	    while(convert(T_setup) - convert(T_current) > 2){
+		    for(uint8_t i = 0; i < 10; i++){
+			    for(uint8_t j = 0; j< 5; j++){
+				    StepRewers();
+			    }
+			    while(!(PIND & (1<<ENDER_OPEN))){
+ 4bc:	4b 9b       	sbis	0x09, 3	; 9
+ 4be:	fa cf       	rjmp	.-12     	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+ 4c0:	c1 50       	subi	r28, 0x01	; 1
+			    }
+		    }
+		    SetupDisplay (T_setup, T_current);
+	    }
+	    while(convert(T_setup) - convert(T_current) > 2){
+		    for(uint8_t i = 0; i < 10; i++){
+ 4c2:	61 f7       	brne	.-40     	; 0x49c <__LOCK_REGION_LENGTH__+0x9c>
+			    }
+			    while(!(PIND & (1<<ENDER_OPEN))){
+				    ErrorDisplay(COOLANT_LOW);
+			    }
+		    }
+		    SetupDisplay ( T_setup, T_current);
+ 4c4:	6d 2f       	mov	r22, r29
+ 4c6:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <T_setup>
+ 4ca:	0e 94 bc 00 	call	0x178	; 0x178 <_Z12SetupDisplayhh>
+				    ErrorDisplay(2);
+			    }
+		    }
+		    SetupDisplay (T_setup, T_current);
+	    }
+	    while(convert(T_setup) - convert(T_current) > 2){
+ 4ce:	d8 cf       	rjmp	.-80     	; 0x480 <__LOCK_REGION_LENGTH__+0x80>
+ 4d0:	c4 e6       	ldi	r28, 0x64	; 100
+			    }
+		    }
+		    SetupDisplay ( T_setup, T_current);
+	    }
+		for(uint8_t i = 0; i < 100; i++){
+			TemperDisplay(T_current);
+ 4d2:	8d 2f       	mov	r24, r29
+ 4d4:	0e 94 7c 00 	call	0xf8	; 0xf8 <_Z13TemperDisplayh>
+ 4d8:	c1 50       	subi	r28, 0x01	; 1
+				    ErrorDisplay(COOLANT_LOW);
+			    }
+		    }
+		    SetupDisplay ( T_setup, T_current);
+	    }
+		for(uint8_t i = 0; i < 100; i++){
+ 4da:	d9 f7       	brne	.-10     	; 0x4d2 <__LOCK_REGION_LENGTH__+0xd2>
+ 4dc:	a6 cf       	rjmp	.-180    	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
+
+000004de <_Z12MotorInitialv>:
+ */
+#include "step_motor.h"
+
+//ноги для мотора на выход
+void MotorInitial (){
+	DDRC |= (1<<MOTOR_WIRE_A)|(1<<MOTOR_WIRE_B)|(1<<MOTOR_WIRE_C)|(1<<MOTOR_WIRE_D); 
+ 4de:	87 b1       	in	r24, 0x07	; 7
+ 4e0:	8c 63       	ori	r24, 0x3C	; 60
+ 4e2:	87 b9       	out	0x07, r24	; 7
+ 4e4:	08 95       	ret
+
+000004e6 <_Z11StepForwardv>:
+}
+
+void StepForward (){
+	PORTC = 0b101000;
+ 4e6:	88 e2       	ldi	r24, 0x28	; 40
+ 4e8:	88 b9       	out	0x08, r24	; 8
+ 4ea:	89 ef       	ldi	r24, 0xF9	; 249
+ 4ec:	90 e0       	ldi	r25, 0x00	; 0
+ 4ee:	01 97       	sbiw	r24, 0x01	; 1
+ 4f0:	f1 f7       	brne	.-4      	; 0x4ee <_Z11StepForwardv+0x8>
+ 4f2:	00 c0       	rjmp	.+0      	; 0x4f4 <_Z11StepForwardv+0xe>
+ 4f4:	00 00       	nop
+	_delay_ms(1);
+	PORTC = 0b011000;
+ 4f6:	88 e1       	ldi	r24, 0x18	; 24
+ 4f8:	88 b9       	out	0x08, r24	; 8
+ 4fa:	89 ef       	ldi	r24, 0xF9	; 249
+ 4fc:	90 e0       	ldi	r25, 0x00	; 0
+ 4fe:	01 97       	sbiw	r24, 0x01	; 1
+ 500:	f1 f7       	brne	.-4      	; 0x4fe <_Z11StepForwardv+0x18>
+ 502:	00 c0       	rjmp	.+0      	; 0x504 <_Z11StepForwardv+0x1e>
+ 504:	00 00       	nop
+	_delay_ms(1);
+	PORTC = 0b010100;
+ 506:	84 e1       	ldi	r24, 0x14	; 20
+ 508:	88 b9       	out	0x08, r24	; 8
+ 50a:	89 ef       	ldi	r24, 0xF9	; 249
+ 50c:	90 e0       	ldi	r25, 0x00	; 0
+ 50e:	01 97       	sbiw	r24, 0x01	; 1
+ 510:	f1 f7       	brne	.-4      	; 0x50e <_Z11StepForwardv+0x28>
+ 512:	00 c0       	rjmp	.+0      	; 0x514 <_Z11StepForwardv+0x2e>
+ 514:	00 00       	nop
+	_delay_ms(1);
+	PORTC = 0b100100;
+ 516:	84 e2       	ldi	r24, 0x24	; 36
+ 518:	88 b9       	out	0x08, r24	; 8
+ 51a:	89 ef       	ldi	r24, 0xF9	; 249
+ 51c:	90 e0       	ldi	r25, 0x00	; 0
+ 51e:	01 97       	sbiw	r24, 0x01	; 1
+ 520:	f1 f7       	brne	.-4      	; 0x51e <_Z11StepForwardv+0x38>
+ 522:	00 c0       	rjmp	.+0      	; 0x524 <_Z11StepForwardv+0x3e>
+ 524:	00 00       	nop
+ 526:	08 95       	ret
+
+00000528 <_Z10StepRewersv>:
+	_delay_ms(1);
+}	
+
+void StepRewers(){
+	PORTC |= 0b101000;
+ 528:	88 b1       	in	r24, 0x08	; 8
+ 52a:	88 62       	ori	r24, 0x28	; 40
+ 52c:	88 b9       	out	0x08, r24	; 8
+ 52e:	89 ef       	ldi	r24, 0xF9	; 249
+ 530:	90 e0       	ldi	r25, 0x00	; 0
+ 532:	01 97       	sbiw	r24, 0x01	; 1
+ 534:	f1 f7       	brne	.-4      	; 0x532 <_Z10StepRewersv+0xa>
+ 536:	00 c0       	rjmp	.+0      	; 0x538 <_Z10StepRewersv+0x10>
+ 538:	00 00       	nop
+	_delay_ms(1);
+	PORTC |= 0b100100;
+ 53a:	88 b1       	in	r24, 0x08	; 8
+ 53c:	84 62       	ori	r24, 0x24	; 36
+ 53e:	88 b9       	out	0x08, r24	; 8
+ 540:	89 ef       	ldi	r24, 0xF9	; 249
+ 542:	90 e0       	ldi	r25, 0x00	; 0
+ 544:	01 97       	sbiw	r24, 0x01	; 1
+ 546:	f1 f7       	brne	.-4      	; 0x544 <_Z10StepRewersv+0x1c>
+ 548:	00 c0       	rjmp	.+0      	; 0x54a <_Z10StepRewersv+0x22>
+ 54a:	00 00       	nop
+	_delay_ms(1);
+	PORTC |= 0b010100;
+ 54c:	88 b1       	in	r24, 0x08	; 8
+ 54e:	84 61       	ori	r24, 0x14	; 20
+ 550:	88 b9       	out	0x08, r24	; 8
+ 552:	89 ef       	ldi	r24, 0xF9	; 249
+ 554:	90 e0       	ldi	r25, 0x00	; 0
+ 556:	01 97       	sbiw	r24, 0x01	; 1
+ 558:	f1 f7       	brne	.-4      	; 0x556 <_Z10StepRewersv+0x2e>
+ 55a:	00 c0       	rjmp	.+0      	; 0x55c <_Z10StepRewersv+0x34>
+ 55c:	00 00       	nop
+	_delay_ms(1);
+	PORTC |= 0b011000;
+ 55e:	88 b1       	in	r24, 0x08	; 8
+ 560:	88 61       	ori	r24, 0x18	; 24
+ 562:	88 b9       	out	0x08, r24	; 8
+ 564:	89 ef       	ldi	r24, 0xF9	; 249
+ 566:	90 e0       	ldi	r25, 0x00	; 0
+ 568:	01 97       	sbiw	r24, 0x01	; 1
+ 56a:	f1 f7       	brne	.-4      	; 0x568 <_Z10StepRewersv+0x40>
+ 56c:	00 c0       	rjmp	.+0      	; 0x56e <_Z10StepRewersv+0x46>
+ 56e:	00 00       	nop
+ 570:	08 95       	ret
+
+00000572 <_Z13StartPositionv>:
+	_delay_ms(1);
+}
+
+void StartPosition (){
+	DDRD &= ~((1<<ENDER_OPEN)|(1<<ENDER_CLOSE));//нога концевика на вход
+ 572:	8a b1       	in	r24, 0x0a	; 10
+ 574:	87 7e       	andi	r24, 0xE7	; 231
+ 576:	8a b9       	out	0x0a, r24	; 10
+	PORTD |= (1<<ENDER_OPEN)|(1<<ENDER_CLOSE);//подтянем "+"
+ 578:	8b b1       	in	r24, 0x0b	; 11
+ 57a:	88 61       	ori	r24, 0x18	; 24
+ 57c:	8b b9       	out	0x0b, r24	; 11
+	while(PIND & (1<<ENDER_CLOSE)){
+ 57e:	4c 9b       	sbis	0x09, 4	; 9
+ 580:	04 c0       	rjmp	.+8      	; 0x58a <_Z13StartPositionv+0x18>
+		StepForward();	
+ 582:	0e 94 73 02 	call	0x4e6	; 0x4e6 <_Z11StepForwardv>
+}
+
+void StartPosition (){
+	DDRD &= ~((1<<ENDER_OPEN)|(1<<ENDER_CLOSE));//нога концевика на вход
+	PORTD |= (1<<ENDER_OPEN)|(1<<ENDER_CLOSE);//подтянем "+"
+	while(PIND & (1<<ENDER_CLOSE)){
+ 586:	4c 99       	sbic	0x09, 4	; 9
+ 588:	fc cf       	rjmp	.-8      	; 0x582 <_Z13StartPositionv+0x10>
+		StepForward();	
+	}
+	PORTC = 0x00;
+ 58a:	18 b8       	out	0x08, r1	; 8
+ 58c:	08 95       	ret
+
+0000058e <__divmodhi4>:
+ 58e:	97 fb       	bst	r25, 7
+ 590:	07 2e       	mov	r0, r23
+ 592:	16 f4       	brtc	.+4      	; 0x598 <__divmodhi4+0xa>
+ 594:	00 94       	com	r0
+ 596:	07 d0       	rcall	.+14     	; 0x5a6 <__divmodhi4_neg1>
+ 598:	77 fd       	sbrc	r23, 7
+ 59a:	09 d0       	rcall	.+18     	; 0x5ae <__divmodhi4_neg2>
+ 59c:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__udivmodhi4>
+ 5a0:	07 fc       	sbrc	r0, 7
+ 5a2:	05 d0       	rcall	.+10     	; 0x5ae <__divmodhi4_neg2>
+ 5a4:	3e f4       	brtc	.+14     	; 0x5b4 <__divmodhi4_exit>
+
+000005a6 <__divmodhi4_neg1>:
+ 5a6:	90 95       	com	r25
+ 5a8:	81 95       	neg	r24
+ 5aa:	9f 4f       	sbci	r25, 0xFF	; 255
+ 5ac:	08 95       	ret
+
+000005ae <__divmodhi4_neg2>:
+ 5ae:	70 95       	com	r23
+ 5b0:	61 95       	neg	r22
+ 5b2:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000005b4 <__divmodhi4_exit>:
+ 5b4:	08 95       	ret
+
+000005b6 <__udivmodhi4>:
+ 5b6:	aa 1b       	sub	r26, r26
+ 5b8:	bb 1b       	sub	r27, r27
+ 5ba:	51 e1       	ldi	r21, 0x11	; 17
+ 5bc:	07 c0       	rjmp	.+14     	; 0x5cc <__udivmodhi4_ep>
+
+000005be <__udivmodhi4_loop>:
+ 5be:	aa 1f       	adc	r26, r26
+ 5c0:	bb 1f       	adc	r27, r27
+ 5c2:	a6 17       	cp	r26, r22
+ 5c4:	b7 07       	cpc	r27, r23
+ 5c6:	10 f0       	brcs	.+4      	; 0x5cc <__udivmodhi4_ep>
+ 5c8:	a6 1b       	sub	r26, r22
+ 5ca:	b7 0b       	sbc	r27, r23
+
+000005cc <__udivmodhi4_ep>:
+ 5cc:	88 1f       	adc	r24, r24
+ 5ce:	99 1f       	adc	r25, r25
+ 5d0:	5a 95       	dec	r21
+ 5d2:	a9 f7       	brne	.-22     	; 0x5be <__udivmodhi4_loop>
+ 5d4:	80 95       	com	r24
+ 5d6:	90 95       	com	r25
+ 5d8:	bc 01       	movw	r22, r24
+ 5da:	cd 01       	movw	r24, r26
+ 5dc:	08 95       	ret
+
+000005de <_exit>:
+ 5de:	f8 94       	cli
+
+000005e0 <__stop_program>:
+ 5e0:	ff cf       	rjmp	.-2      	; 0x5e0 <__stop_program>
