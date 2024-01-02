@@ -14,8 +14,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 
-#define PORT_DISPLAY PORTB
-#define DDR_DISPLAY DDRB
+
 #define DDRCatod DDRC
 #define PortCatod PORTC
 #define PinCatod_1 1

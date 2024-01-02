@@ -10,7 +10,7 @@
 #define DISPLAY_H_
 
 #include "main.h"
-#define PointLeg 7
+
 
 void InitDisplay();
 

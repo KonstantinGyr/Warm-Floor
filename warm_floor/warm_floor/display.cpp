@@ -6,6 +6,14 @@
  */ 
 
 #include "display.h"
+#define SEG_A 0
+#define SEG_B 1
+#define SEG_C 2
+#define SEG_D 3
+#define SEG_E 4
+#define SEG_F 5
+#define SEG_G 1
+#define SEG_POINT 0
 
 unsigned char SEGMENTS[] =
 {
@@ -23,8 +31,9 @@ unsigned char SEGMENTS[] =
 };
 
 void InitDisplay(){
-	DDR_DISPLAY = 0xFF; // ѕорт B - выход
-	PORT_DISPLAY = 0x00;
+	DDRB |= (1<<SEG_A)|(1<<SEG_B)|(1<<SEG_C)|(1<<SEG_D)|(1<<SEG_E)|(1<<SEG_F) ; // ѕорт B - выход с 0 по 5
+	DDRD |= (1<<SEG_POINT)|(1<<SEG_G); //порт D выход 0 и 1
+	
 	DDRCatod |= (1<<PinCatod_10)|(1<<PinCatod_1); // ноги катодов на выход
 	PortCatod = (1<<PinCatod_10)|(1<<PinCatod_1); // высокий уровень на ноги катодов
 }
@@ -51,20 +60,21 @@ void TemperDisplay (unsigned char temper){
 	temper>>=1;
 	int IntegerTemper = convert(temper);
 	for(int i = 0;i < 10;i++){
-		PORT_DISPLAY = SEGMENTS[IntegerTemper % 10];
-		if(HalfTemper)PORT_DISPLAY |= (1 << PointLeg);
+		PORTD |= SEGMENTS[IntegerTemper % 10] << 6;
+		PORTB |= SEGMENTS[IntegerTemper % 10] >>1;
+		if(HalfTemper)PORTD |= (1 << SEG_POINT);
 		PortCatod = 0b01;
 		_delay_ms(5);
 		PortCatod = 0b11;
 		_delay_ms(1);
-		PORT_DISPLAY = SEGMENTS[IntegerTemper / 10];
+		PORTD |= SEGMENTS[IntegerTemper / 10] << 6;
+		PORTB |= SEGMENTS[IntegerTemper / 10] >>1;
 		PortCatod = 0b10;
 		_delay_ms(5);
 		PortCatod = 0b11;
 		_delay_ms(1);
 	}
-// 	PORT_DISPLAY = 0x00;
-// 	PortCatod = 0x00;
+ 	PortCatod = 0x00;
 }
 
 void SetupDisplay (uint8_t T_setup, uint8_t T_current){
@@ -83,17 +93,18 @@ void SetupDisplay (uint8_t T_setup, uint8_t T_current){
 
 void ErrorDisplay (int error){
 		for(int i = 0;i < 5;i++){
-			PORT_DISPLAY = SEGMENTS[error];
+			PORTD |= SEGMENTS[error] << 6;
+			PORTB |= SEGMENTS[error] >>1;
 			PortCatod = 0b01;
 			_delay_ms(5);
 			PortCatod = 0b11;
 			_delay_ms(1);
-			PORT_DISPLAY = E;
+			PORTD |= (1<<SEG_G);
+			PORTB |= 0x39;
 			PortCatod = 0b10;
 			_delay_ms(5);
 			PortCatod = 0b11;
 			_delay_ms(1);
 		}
-// 		PORT_DISPLAY = 0x00;
-// 		PortCatod = 0x00;
+		PortCatod = 0x00;
 }
